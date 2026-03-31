@@ -4,7 +4,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Value;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -14,7 +15,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 /**
- * CryptoFilter — HTTP Transport Layer Encryption.
+ * CryptoFilter €” HTTP Transport Layer Encryption.
  *
  * Bắt tất cả request/response trên các endpoint nhạy cảm (/api/**).
  *
@@ -31,13 +32,16 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class CryptoFilter extends OncePerRequestFilter {
 
-    private final AESCipher cipher;
+    private static final Logger log = LoggerFactory.getLogger(CryptoFilter.class);
 
-    /** Header báo hiệu request/response có được mã hóa không */
+    private final DHService dhService;
+
+    /** Header bo hi‡u request/response c ‘c m ha khng */
     public static final String ENCRYPTED_HEADER = "X-Encrypted";
+    public static final String SESSION_HEADER = "X-DH-Session-Id";
 
-    public CryptoFilter(@Value("${app.aes.transport-key}") String transportKey) {
-        this.cipher = new AESCipher(transportKey.getBytes(StandardCharsets.UTF_8));
+    public CryptoFilter(DHService dhService) {
+        this.dhService = dhService;
     }
 
     @Override
@@ -47,8 +51,15 @@ public class CryptoFilter extends OncePerRequestFilter {
         }
 
         // Bỏ qua filter với các path không phải API
-        String path = request.getServletPath();
-        return !path.startsWith("/api/");
+        String path = request.getRequestURI();
+
+        // Pass through DH handshake to prevent infinite loops of encryption
+        if (path.contains("/api/auth/handshake")) {
+            System.out.println("[CryptoFilter] Bypassing DH handshake: " + path);
+            return true;
+        }
+
+        return !path.contains("/api/");
     }
 
     @Override
@@ -57,17 +68,32 @@ public class CryptoFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-        // Chỉ xử lý nếu client báo hiệu gửi encrypted payload
+        // Ch‰ x l nu client bo hi‡u gi encrypted payload
         String encryptedHeader = request.getHeader(ENCRYPTED_HEADER);
         boolean isEncrypted = "true".equalsIgnoreCase(encryptedHeader);
 
         if (isEncrypted) {
+            String sessionId = request.getHeader(SESSION_HEADER);
+            if (sessionId == null || sessionId.isEmpty()) {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Missing DH session");
+                return;
+            }
+            byte[] rawSessionKey = dhService.getSessionKey(sessionId);
+            if (rawSessionKey == null) {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid or expired DH session");
+                return;
+            }
+            AESCipher activeCipher = new AESCipher(rawSessionKey);
+
             // --- DECRYPT REQUEST ---
             byte[] rawBody = request.getInputStream().readAllBytes();
             String hexPayload = new String(rawBody, StandardCharsets.UTF_8).trim();
-            String jsonBody   = cipher.decrypt(hexPayload);
+            log.info("[CryptoFilter] Incoming encrypted payload: session={} path={} len={} hexSample={}", sessionId, request.getRequestURI(), hexPayload.length(), sample(hexPayload));
 
-            // Wrap lại request với JSON đã giải mã
+            String jsonBody   = activeCipher.decrypt(hexPayload);
+            log.info("[CryptoFilter] Decrypted request JSON: session={} path={} len={} jsonSample={}", sessionId, request.getRequestURI(), jsonBody.length(), sample(jsonBody));
+
+            // Wrap li request v›i JSON ‘ gii m
             byte[] decryptedBodyBytes = jsonBody.getBytes(StandardCharsets.UTF_8);
             HttpServletRequest wrappedRequest = new BodyReplacedRequest(request, decryptedBodyBytes);
 
@@ -77,15 +103,29 @@ public class CryptoFilter extends OncePerRequestFilter {
 
             byte[] originalBody  = capturedResponse.getCapturedBody();
             String originalJson  = new String(originalBody, StandardCharsets.UTF_8);
-            String encryptedJson = cipher.encrypt(originalJson);
+            log.info("[CryptoFilter] Controller response JSON: session={} path={} len={} jsonSample={}", sessionId, request.getRequestURI(), originalJson.length(), sample(originalJson));
+
+            String encryptedJson = activeCipher.encrypt(originalJson);
+            log.info("[CryptoFilter] Outgoing encrypted payload: session={} path={} len={} hexSample={}", sessionId, request.getRequestURI(), encryptedJson.length(), sample(encryptedJson));
 
             response.setContentType("text/plain;charset=UTF-8");
             response.setHeader(ENCRYPTED_HEADER, "true");
+            // Also echo back the session header so client knows returning payload uses the same key
+            if (sessionId != null) {
+                response.setHeader(SESSION_HEADER, sessionId);
+            }
             response.getOutputStream().write(encryptedJson.getBytes(StandardCharsets.UTF_8));
         } else {
-            // Không mã hóa: đi thẳng vào controller (dùng khi test bằng Postman)
-            filterChain.doFilter(request, response);
+            // Yêu cầu mọi request API phải mã hóa bằng khóa phiên
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "X-Encrypted header required");
         }
+    }
+
+    private String sample(String content) {
+//        if (content == null) return "null";
+//        int max = Math.min(content.length(), 200);
+//        return content.substring(0, max);
+        return content;
     }
 
     // ─────────────────────────────────────────────────────────────────────────

@@ -4,16 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d587c69-0358-4517-89ab-f8578b39c765" name="Changes" comment="" />
+    <list default="true" id="7d587c69-0358-4517-89ab-f8578b39c765" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Client/.idea/copilotDiffState.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSAT&amp;BMTT/.github/copilot-instructions.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSAT&amp;BMTT/.github/git-commit-instructions.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSAT&amp;BMTT/src/main/java/group2/CSAT/BMTT/crypto/CryptoFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSAT&amp;BMTT/src/main/java/group2/CSAT/BMTT/crypto/CryptoFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSAT&amp;BMTT/src/main/java/group2/CSAT/BMTT/security/CustomSHA256PasswordEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSAT&amp;BMTT/src/main/java/group2/CSAT/BMTT/security/CustomSHA256PasswordEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.github/copilot-instructions.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.github/git-commit-instructions.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/csat/client/api/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/csat/client/api/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/csat/client/crypto/AESCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/csat/client/crypto/AESCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/target/classes/csat/client/api/ApiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/Client/target/classes/csat/client/api/ApiClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/target/classes/csat/client/crypto/AESCipher.class" beforeDir="false" afterPath="$PROJECT_DIR$/Client/target/classes/csat/client/crypto/AESCipher.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/Data/IntelIJ/CSAT-BMTT" value="3Ba8Bj0LlH0rBtyVM9IjIJjRgoq" />
+    </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="chat-panel" value="GPT-5.1-Codex-Max" />
+      <entry key="agent-panel" value="GPT-5.1-Codex-Max" />
+    </selectedModels>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -29,28 +56,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AES.executor": "Run",
-    "Application.AESReference.executor": "Run",
-    "Docker.docker-compose.yml.mysqldb: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Application.executor": "Run",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Data/IntelIJ/CSAT-BMTT/CSAT&BMTT",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AES.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AESReference.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.mysqldb: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Data/IntelIJ/CSAT-BMTT&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="AES" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="group2.CSAT.BMTT.algorithm.AES" />
@@ -86,7 +115,9 @@
       </method>
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -137,10 +168,20 @@
       <updated>1774715686193</updated>
       <workItem from="1774715687435" duration="1992000" />
       <workItem from="1774751969485" duration="3370000" />
+      <workItem from="1774949373769" duration="22000" />
+      <workItem from="1774949406776" duration="27000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

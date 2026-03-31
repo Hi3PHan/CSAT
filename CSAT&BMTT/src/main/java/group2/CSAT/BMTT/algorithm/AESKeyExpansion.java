@@ -1,5 +1,7 @@
 package group2.CSAT.BMTT.algorithm;
 
+import group2.CSAT.BMTT.algorithm.AESTables;
+
 /**
  * AES Key Expansion (FIPS 197).
  *

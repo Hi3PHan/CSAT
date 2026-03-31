@@ -28,6 +28,15 @@ public class DashboardFrame extends JFrame {
     private JTable          table;
     private DefaultTableModel tableModel;
     private JLabel          lblInfo;
+    private JTabbedPane     tabs;
+
+    // Crypto playground controls
+    private JTextArea       txtPlainIn;
+    private JTextArea       txtHexOut;
+    private JTextArea       txtHexIn;
+    private JTextArea       txtPlainOut;
+    private JLabel          lblCryptoStatus;
+    private JLabel          lblSessionKey;
 
     private static final String[] COLUMNS = {
         "ID", "Họ tên", "CCCD", "SĐT", "Email", "Số TK Ngân hàng", "Lương", "Algo"
@@ -88,34 +97,11 @@ public class DashboardFrame extends JFrame {
         header.add(headerRight, BorderLayout.EAST);
         main.add(header, BorderLayout.NORTH);
 
-        // ── Table ────────────────────────────────────────────────────
-        tableModel = new DefaultTableModel(COLUMNS, 0) {
-            @Override public boolean isCellEditable(int row, int col) { return false; }
-        };
-        table = new JTable(tableModel);
-        table.setFont(table.getFont().deriveFont(Font.PLAIN, 13f));
-        table.setRowHeight(32);
-        table.setShowGrid(false);
-        table.setIntercellSpacing(new Dimension(0, 1));
-        table.setSelectionBackground(new Color(50, 80, 140));
-        table.setSelectionForeground(Color.WHITE);
-
-        // Header style
-        JTableHeader th = table.getTableHeader();
-        th.setFont(th.getFont().deriveFont(Font.BOLD, 12f));
-        th.setBorder(BorderFactory.createEmptyBorder());
-
-        // Column widths
-        int[] widths = {40, 160, 130, 110, 180, 140, 100, 110};
-        for (int i = 0; i < widths.length; i++)
-            table.getColumnModel().getColumn(i).setPreferredWidth(widths[i]);
-
-        // Màu xen kẽ cho row
-        table.setDefaultRenderer(Object.class, new AlternatingRowRenderer());
-
-        JScrollPane scroll = new JScrollPane(table);
-        scroll.setBorder(BorderFactory.createEmptyBorder());
-        main.add(scroll, BorderLayout.CENTER);
+        // ── Tabs ─────────────────────────────────────────────────────
+        tabs = new JTabbedPane();
+        tabs.addTab("Employees", buildEmployeeTab());
+        tabs.addTab("Encrypt / Decrypt", buildCryptoTab());
+        main.add(tabs, BorderLayout.CENTER);
 
         // ── Footer / Status bar ──────────────────────────────────────
         JPanel footer = new JPanel(new BorderLayout());
@@ -170,6 +156,153 @@ public class DashboardFrame extends JFrame {
             }
         };
         worker.execute();
+    }
+
+    private JPanel buildEmployeeTab() {
+        tableModel = new DefaultTableModel(COLUMNS, 0) {
+            @Override public boolean isCellEditable(int row, int col) { return false; }
+        };
+        table = new JTable(tableModel);
+        table.setFont(table.getFont().deriveFont(Font.PLAIN, 13f));
+        table.setRowHeight(32);
+        table.setShowGrid(false);
+        table.setIntercellSpacing(new Dimension(0, 1));
+        table.setSelectionBackground(new Color(50, 80, 140));
+        table.setSelectionForeground(Color.WHITE);
+
+        JTableHeader th = table.getTableHeader();
+        th.setFont(th.getFont().deriveFont(Font.BOLD, 12f));
+        th.setBorder(BorderFactory.createEmptyBorder());
+
+        int[] widths = {40, 160, 130, 110, 180, 140, 100, 110};
+        for (int i = 0; i < widths.length; i++)
+            table.getColumnModel().getColumn(i).setPreferredWidth(widths[i]);
+
+        table.setDefaultRenderer(Object.class, new AlternatingRowRenderer());
+
+        JScrollPane scroll = new JScrollPane(table);
+        scroll.setBorder(BorderFactory.createEmptyBorder());
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(scroll, BorderLayout.CENTER);
+        return panel;
+    }
+
+    private JPanel buildCryptoTab() {
+        JPanel panel = new JPanel(new BorderLayout(12, 12));
+        panel.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
+
+        JPanel grids = new JPanel(new GridLayout(1, 2, 12, 0));
+
+        // Encrypt block
+        JPanel encryptBox = new JPanel(new BorderLayout(8, 8));
+        encryptBox.setBorder(BorderFactory.createTitledBorder("Encrypt to hex"));
+        txtPlainIn = new JTextArea(8, 30);
+        txtPlainIn.setLineWrap(true);
+        txtPlainIn.setWrapStyleWord(true);
+        JScrollPane spPlain = new JScrollPane(txtPlainIn);
+        encryptBox.add(spPlain, BorderLayout.CENTER);
+
+        JButton btnEncrypt = new JButton("Encrypt ➜ Hex");
+        btnEncrypt.addActionListener(e -> doEncrypt());
+        encryptBox.add(btnEncrypt, BorderLayout.SOUTH);
+
+        txtHexOut = new JTextArea(6, 30);
+        txtHexOut.setEditable(false);
+        txtHexOut.setLineWrap(true);
+        txtHexOut.setWrapStyleWord(true);
+        JScrollPane spHexOut = new JScrollPane(txtHexOut);
+        JPanel encBottom = new JPanel(new BorderLayout(4, 4));
+        encBottom.add(new JLabel("Encrypted hex:"), BorderLayout.NORTH);
+        encBottom.add(spHexOut, BorderLayout.CENTER);
+        encryptBox.add(encBottom, BorderLayout.EAST);
+
+        // Decrypt block
+        JPanel decryptBox = new JPanel(new BorderLayout(8, 8));
+        decryptBox.setBorder(BorderFactory.createTitledBorder("Decrypt from hex"));
+        txtHexIn = new JTextArea(8, 30);
+        txtHexIn.setLineWrap(true);
+        txtHexIn.setWrapStyleWord(true);
+        JScrollPane spHexIn = new JScrollPane(txtHexIn);
+        decryptBox.add(spHexIn, BorderLayout.CENTER);
+
+        JButton btnDecrypt = new JButton("Decrypt ➜ Text");
+        btnDecrypt.addActionListener(e -> doDecrypt());
+        decryptBox.add(btnDecrypt, BorderLayout.SOUTH);
+
+        txtPlainOut = new JTextArea(6, 30);
+        txtPlainOut.setEditable(false);
+        txtPlainOut.setLineWrap(true);
+        txtPlainOut.setWrapStyleWord(true);
+        JScrollPane spPlainOut = new JScrollPane(txtPlainOut);
+        JPanel decBottom = new JPanel(new BorderLayout(4, 4));
+        decBottom.add(new JLabel("Decrypted text:"), BorderLayout.NORTH);
+        decBottom.add(spPlainOut, BorderLayout.CENTER);
+        decryptBox.add(decBottom, BorderLayout.EAST);
+
+        grids.add(encryptBox);
+        grids.add(decryptBox);
+        panel.add(grids, BorderLayout.CENTER);
+
+        lblSessionKey = new JLabel(sessionKeyLabelText());
+        lblSessionKey.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+        lblSessionKey.setForeground(UiTheme.color("App.status.info", new Color(0, 99, 194)));
+
+        lblCryptoStatus = new JLabel("Use the established session key to test payloads.");
+        lblCryptoStatus.setForeground(UiTheme.color("App.status.info", new Color(0, 99, 194)));
+
+        JPanel south = new JPanel(new GridLayout(0, 1, 0, 4));
+        south.setOpaque(false);
+        south.add(lblSessionKey);
+        south.add(lblCryptoStatus);
+        panel.add(south, BorderLayout.SOUTH);
+
+        return panel;
+    }
+
+    private void doEncrypt() {
+        try {
+            String plain = txtPlainIn.getText();
+            if (plain == null || plain.isBlank()) {
+                lblCryptoStatus.setForeground(UiTheme.color("App.status.error", new Color(185, 28, 28)));
+                lblCryptoStatus.setText("Please enter text to encrypt.");
+                return;
+            }
+            String hex = apiClient.encryptLocal(plain);
+            txtHexOut.setText(hex);
+            lblCryptoStatus.setForeground(UiTheme.color("App.status.success", new Color(21, 128, 61)));
+            lblCryptoStatus.setText("Encrypted successfully.");
+        } catch (Exception ex) {
+            lblCryptoStatus.setForeground(UiTheme.color("App.status.error", new Color(185, 28, 28)));
+            lblCryptoStatus.setText("Encrypt error: " + ex.getMessage());
+        }
+    }
+
+    private void doDecrypt() {
+        try {
+            String hex = txtHexIn.getText();
+            if (hex == null || hex.isBlank()) {
+                lblCryptoStatus.setForeground(UiTheme.color("App.status.error", new Color(185, 28, 28)));
+                lblCryptoStatus.setText("Please enter hex to decrypt.");
+                return;
+            }
+            String plain = apiClient.decryptLocal(hex.trim());
+            txtPlainOut.setText(plain);
+            lblCryptoStatus.setForeground(UiTheme.color("App.status.success", new Color(21, 128, 61)));
+            lblCryptoStatus.setText("Decrypted successfully.");
+        } catch (Exception ex) {
+            lblCryptoStatus.setForeground(UiTheme.color("App.status.error", new Color(185, 28, 28)));
+            lblCryptoStatus.setText("Decrypt error: " + ex.getMessage());
+        }
+    }
+
+    private String sessionKeyLabelText() {
+        try {
+            String hex = apiClient.getSessionKeyHex();
+            return "Session AES-128 key (hex): " + hex;
+        } catch (Exception ex) {
+            return "Session AES-128 key: (not established yet)";
+        }
     }
 
     private String formatSalary(String raw) {

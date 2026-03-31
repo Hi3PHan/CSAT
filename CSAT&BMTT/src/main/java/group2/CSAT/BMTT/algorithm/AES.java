@@ -1,5 +1,6 @@
 package group2.CSAT.BMTT.algorithm;
 
+import group2.CSAT.BMTT.algorithm.AESTransformations;
 /**
  * AES (Advanced Encryption Standard) – main entry point.
  *
@@ -28,8 +29,8 @@ public class AES {
      * @param key 16-byte key (AES-128) or 32-byte key (AES-256)
      */
     public AES(byte[] key) {
-        this.roundKeys = AESKeyExpansion.expand(key);
-        this.nr = AESKeyExpansion.getRounds(key.length);
+        this.roundKeys = group2.CSAT.BMTT.algorithm.AESKeyExpansion.expand(key);
+        this.nr = group2.CSAT.BMTT.algorithm.AESKeyExpansion.getRounds(key.length);
     }
 
     // ------------------------------------------------------------------ //

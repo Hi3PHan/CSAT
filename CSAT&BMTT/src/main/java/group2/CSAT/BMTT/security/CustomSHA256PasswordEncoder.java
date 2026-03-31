@@ -5,8 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.SecureRandom;
 import java.util.Base64;
+import group2.CSAT.BMTT.algorithm.CustomSaltGenerator;
 
 /**
  * Lớp cấu hình tự viết thay thế cho BCryptPasswordEncoder.
@@ -17,8 +17,8 @@ import java.util.Base64;
  */
 public class CustomSHA256PasswordEncoder implements PasswordEncoder {
 
-    // Sinh chuỗi ngẫu nhiên (chỉ dùng để sinh mảng byte mồi thêm cho khác biệt)
-    private final SecureRandom random = new SecureRandom();
+    // Sinh chuỗi ngẫu nhiên (sử dụng generator tự viết)
+    // private final SecureRandom random = new SecureRandom(); // Không dùng thư viện SecureRandom nữa
 
     /**
      * Hàm encode: Băm mật khẩu người dùng truyền gửi vào
@@ -29,11 +29,9 @@ public class CustomSHA256PasswordEncoder implements PasswordEncoder {
             throw new IllegalArgumentException("rawPassword must not be null");
         }
 
-        // 1. Sinh ngẫu nhiên "Salt" dài 16 byte
-        byte[] saltBytes = new byte[16];
-        random.nextBytes(saltBytes);
-        // Đổi salt sang chuỗi đơn giản Base64 để lưu chung với chuỗi băm
-        String salt = Base64.getEncoder().encodeToString(saltBytes);
+        // 1. Sinh ngẫu nhiên "Salt" dựa trên 3 lớp (Time, Random, Counter)
+        // Thay thế Base64 bằng mã hóa Base36 và tự sinh entropy
+        String salt = CustomSaltGenerator.generateSalt();
 
         // 2. Trộn Salt vào Mật khẩu (Muối + Mật khẩu hiện tại)
         String saltedPassword = salt + rawPassword;

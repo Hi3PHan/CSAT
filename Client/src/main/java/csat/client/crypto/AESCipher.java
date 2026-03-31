@@ -5,8 +5,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * AESCipher — Bọc ngoài AES.java để xử lý chuỗi có độ dài bất kỳ.
- * Dùng PKCS#7 Padding + ECB Block Mode.
- * Giống hệt class cùng tên ở Backend để đảm bảo mã hóa/giải mã khớp nhau.
+ * Dùng PKCS#7 Padding + ECB Block Mode (khớp với backend CryptoFilter).
  */
 public class AESCipher {
     private final AES aes;
@@ -15,13 +14,13 @@ public class AESCipher {
 
     public String encrypt(String plaintext) {
         byte[] padded = pkcs7Pad(plaintext.getBytes(StandardCharsets.UTF_8));
-        byte[] cipher = encryptBlocks(padded);
+        byte[] cipher = encryptBlocksECB(padded);
         return bytesToHex(cipher);
     }
 
     public String decrypt(String hexCipher) {
         byte[] cipherBytes = hexToBytes(hexCipher);
-        byte[] decrypted   = decryptBlocks(cipherBytes);
+        byte[] decrypted   = decryptBlocksECB(cipherBytes);
         byte[] unpadded    = pkcs7Unpad(decrypted);
         return new String(unpadded, StandardCharsets.UTF_8);
     }
@@ -41,7 +40,7 @@ public class AESCipher {
         return r;
     }
 
-    private byte[] encryptBlocks(byte[] data) {
+    private byte[] encryptBlocksECB(byte[] data) {
         byte[] result = new byte[data.length];
         byte[] block = new byte[16];
         for (int i = 0; i < data.length / 16; i++) {
@@ -52,7 +51,10 @@ public class AESCipher {
         return result;
     }
 
-    private byte[] decryptBlocks(byte[] data) {
+    private byte[] decryptBlocksECB(byte[] data) {
+        if (data.length % 16 != 0) {
+            throw new IllegalArgumentException("Ciphertext length must be a multiple of 16 bytes.");
+        }
         byte[] result = new byte[data.length];
         byte[] block = new byte[16];
         for (int i = 0; i < data.length / 16; i++) {

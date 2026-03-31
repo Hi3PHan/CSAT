@@ -1,0 +1,159 @@
+2026-03-31 21:57:14.499 INFO  [main] group2.CSAT.BMTT.Application - Starting Application using Java 21.0.10 with PID 4328 (D:\Data\IntelIJ\CSAT-BMTT\CSAT&BMTT\target\classes started by Admin in D:\Data\IntelIJ\CSAT-BMTT\CSAT&BMTT)
+2026-03-31 21:57:14.501 INFO  [main] group2.CSAT.BMTT.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-31 21:57:14.625 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-31 21:57:15.013 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-31 21:57:15.054 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+2026-03-31 21:57:15.481 INFO  [main] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-03-31 21:57:15.494 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-03-31 21:57:15.496 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-31 21:57:15.496 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-03-31 21:57:15.549 INFO  [main] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1015 ms
+2026-03-31 21:57:15.736 INFO  [main] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-31 21:57:15.782 INFO  [main] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-03-31 21:57:16.090 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-31 21:57:16.118 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-31 21:57:16.349 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@118e2487
+2026-03-31 21:57:16.350 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-31 21:57:16.402 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-31 21:57:16.420 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/csat_bmtt?useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: csat_bmtt/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-31 21:57:17.340 INFO  [main] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-31 21:57:17.429 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-31 21:57:17.497 INFO  [main] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-31 21:57:18.096 WARN  [main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-31 21:57:18.156 WARN  [main] o.s.b.s.a.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 918cfa07-56c5-4ba1-88dc-6c006057e856
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-03-31 21:57:18.162 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-31 21:57:18.634 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-03-31 21:57:18.657 INFO  [main] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2026-03-31 21:57:18.664 INFO  [main] group2.CSAT.BMTT.Application - Started Application in 4.568 seconds (process running for 5.07)
+2026-03-31 21:57:34.755 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-31 21:57:34.755 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-31 21:57:34.757 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-03-31 21:57:34.932 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/auth/login len=96 hexSample=d3a706078882d47c5fb599f4fc6a6eade48fa129c19a35ae0d041fc888807df1b1bccca62381d081c64b16bf89873058
+2026-03-31 21:57:34.933 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/auth/login len=47 jsonSample={"username":"giamdoc","password":"password123"}
+2026-03-31 21:57:35.058 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.service.AuthService - [Auth] Login success: username=giamdoc level=3 token=6256947d-e021-408f-91e6-2588a21504ec expires=2026-03-31T22:27:35.033273
+2026-03-31 21:57:35.080 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/auth/login len=79 jsonSample={"token":"6256947d-e021-408f-91e6-2588a21504ec","username":"giamdoc","level":3}
+2026-03-31 21:57:35.081 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/auth/login len=160 hexSample=b62e164ff8d488538441cce0e7a1c28f164c772b30ee26545826943b6528d4fa30722db7eb40e97d54650d8582a63d7a1db1b32396db8a205cfd6690766a04af02fd9b6dbcb002eae0f71df62917ebbe
+2026-03-31 21:57:35.701 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 hexSample=
+2026-03-31 21:57:35.701 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 jsonSample=
+2026-03-31 21:57:35.703 INFO  [http-nio-8081-exec-4] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=0 hexSample=
+2026-03-31 21:57:35.704 INFO  [http-nio-8081-exec-4] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=0 jsonSample=
+2026-03-31 21:57:35.726 INFO  [http-nio-8081-exec-4] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=7420 jsonSample=["2026-03-31 21:57:14.499 INFO  [main] group2.CSAT.BMTT.Application - Starting Application using Java 21.0.10 with PID 4328 (D:\\Data\\IntelIJ\\CSAT-BMTT\\CSAT&BMTT\\target\\classes started by Admin i
+2026-03-31 21:57:35.737 INFO  [http-nio-8081-exec-4] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=14848 hexSample=486e986c8579eea016501255cc745917657230b9e19231fe59bdae6f90f2988237f98405f4c3f487f04030996b748b4b4b290912ba69ff6d865c1216506bff5640fb97ed1784f51b357388b342d0f1e103e2a857bf96370fbeb0947b1eadeb5fe6a19a2d
+2026-03-31 21:57:35.757 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.service.UserService - [UserService] DB raw users fetched: count=4 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:57:35.758 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.service.UserService - [UserService] Masked users ready for response: count=4 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:57:35.763 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=675 jsonSample=[{"id":1,"fullName":"dsa","cccd":"111111111111","phone":"43243243242","email":"hjdfas@gmail.com","bankAccount":"34234324","salary":"1200000","algo":"AES-128-ECB"},{"id":2,"fullName":"Phan Van Hiep","c
+2026-03-31 21:57:35.765 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=1376 hexSample=c0d8b8bde50398d8eef411307389934a42b05fbc625fe8f541714455964acaa11878af7b14c37df8bbf9c88c3485aa01a3836849cf932f11a9ce7c550b4c245628806d3319fe710f1cb13dea8df7a820ff8b4a30daa3424c97d2f1187c5828f793e845d0
+2026-03-31 21:57:37.919 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 hexSample=
+2026-03-31 21:57:37.919 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 jsonSample=
+2026-03-31 21:57:37.938 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.service.UserService - [UserService] DB raw users fetched: count=4 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:57:37.938 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.service.UserService - [UserService] Masked users ready for response: count=4 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:57:37.939 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=675 jsonSample=[{"id":1,"fullName":"dsa","cccd":"111111111111","phone":"43243243242","email":"hjdfas@gmail.com","bankAccount":"34234324","salary":"1200000","algo":"AES-128-ECB"},{"id":2,"fullName":"Phan Van Hiep","c
+2026-03-31 21:57:37.940 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=1376 hexSample=c0d8b8bde50398d8eef411307389934a42b05fbc625fe8f541714455964acaa11878af7b14c37df8bbf9c88c3485aa01a3836849cf932f11a9ce7c550b4c245628806d3319fe710f1cb13dea8df7a820ff8b4a30daa3424c97d2f1187c5828f793e845d0
+2026-03-31 21:58:21.996 INFO  [http-nio-8081-exec-8] g.CSAT.BMTT.service.UserService - [UserService] Created user: callerLevel=3 saved=id=5,fullName=Nguyen Van A,cccd=042304000943,phone=0928456724,email=VanA@gmail.com,bank=0293784628491,salary=10000000,algo=AES-128-ECB 
+2026-03-31 21:58:22.871 INFO  [http-nio-8081-exec-10] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 hexSample=
+2026-03-31 21:58:22.871 INFO  [http-nio-8081-exec-10] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 jsonSample=
+2026-03-31 21:58:22.893 INFO  [http-nio-8081-exec-10] g.CSAT.BMTT.service.UserService - [UserService] DB raw users fetched: count=5 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:58:22.893 INFO  [http-nio-8081-exec-10] g.CSAT.BMTT.service.UserService - [UserService] Masked users ready for response: count=5 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:58:22.894 INFO  [http-nio-8081-exec-10] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=849 jsonSample=[{"id":1,"fullName":"dsa","cccd":"111111111111","phone":"43243243242","email":"hjdfas@gmail.com","bankAccount":"34234324","salary":"1200000","algo":"AES-128-ECB"},{"id":2,"fullName":"Phan Van Hiep","c
+2026-03-31 21:58:22.896 INFO  [http-nio-8081-exec-10] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=1728 hexSample=c0d8b8bde50398d8eef411307389934a42b05fbc625fe8f541714455964acaa11878af7b14c37df8bbf9c88c3485aa01a3836849cf932f11a9ce7c550b4c245628806d3319fe710f1cb13dea8df7a820ff8b4a30daa3424c97d2f1187c5828f793e845d0
+2026-03-31 21:58:25.124 INFO  [http-nio-8081-exec-9] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 hexSample=
+2026-03-31 21:58:25.124 INFO  [http-nio-8081-exec-9] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=0 jsonSample=
+2026-03-31 21:58:25.142 INFO  [http-nio-8081-exec-9] g.CSAT.BMTT.service.UserService - [UserService] DB raw users fetched: count=5 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:58:25.142 INFO  [http-nio-8081-exec-9] g.CSAT.BMTT.service.UserService - [UserService] Masked users ready for response: count=5 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 21:58:25.144 INFO  [http-nio-8081-exec-9] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=849 jsonSample=[{"id":1,"fullName":"dsa","cccd":"111111111111","phone":"43243243242","email":"hjdfas@gmail.com","bankAccount":"34234324","salary":"1200000","algo":"AES-128-ECB"},{"id":2,"fullName":"Phan Van Hiep","c
+2026-03-31 21:58:25.145 INFO  [http-nio-8081-exec-9] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/users len=1728 hexSample=c0d8b8bde50398d8eef411307389934a42b05fbc625fe8f541714455964acaa11878af7b14c37df8bbf9c88c3485aa01a3836849cf932f11a9ce7c550b4c245628806d3319fe710f1cb13dea8df7a820ff8b4a30daa3424c97d2f1187c5828f793e845d0
+2026-03-31 21:58:34.414 INFO  [http-nio-8081-exec-1] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=0 hexSample=
+2026-03-31 21:58:34.415 INFO  [http-nio-8081-exec-1] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=0 jsonSample=
+2026-03-31 21:58:34.423 INFO  [http-nio-8081-exec-1] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=15898 jsonSample=["2026-03-31 21:57:14.499 INFO  [main] group2.CSAT.BMTT.Application - Starting Application using Java 21.0.10 with PID 4328 (D:\\Data\\IntelIJ\\CSAT-BMTT\\CSAT&BMTT\\target\\classes started by Admin i
+2026-03-31 21:58:34.440 INFO  [http-nio-8081-exec-1] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=bac4f797-546d-40b6-b124-6ba2a15c7f05 path=/api/logs len=31808 hexSample=486e986c8579eea016501255cc745917657230b9e19231fe59bdae6f90f2988237f98405f4c3f487f04030996b748b4b4b290912ba69ff6d865c1216506bff5640fb97ed1784f51b357388b342d0f1e103e2a857bf96370fbeb0947b1eadeb5fe6a19a2d
+2026-03-31 22:07:24.723 INFO  [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-31 22:07:24.735 INFO  [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-31 22:07:24.740 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-31 22:07:24.742 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-31 22:07:24.750 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-31 22:07:41.702 INFO  [main] group2.CSAT.BMTT.Application - Starting Application using Java 21.0.10 with PID 39888 (D:\Data\IntelIJ\CSAT-BMTT\CSAT&BMTT\target\classes started by Admin in D:\Data\IntelIJ\CSAT-BMTT\CSAT&BMTT)
+2026-03-31 22:07:41.705 INFO  [main] group2.CSAT.BMTT.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-31 22:07:41.824 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-31 22:07:42.125 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-31 22:07:42.163 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 4 JPA repository interfaces.
+2026-03-31 22:07:42.480 INFO  [main] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-03-31 22:07:42.488 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-03-31 22:07:42.489 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-31 22:07:42.489 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-03-31 22:07:42.519 INFO  [main] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 783 ms
+2026-03-31 22:07:42.633 INFO  [main] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-31 22:07:42.663 INFO  [main] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-03-31 22:07:42.950 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-31 22:07:42.969 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-31 22:07:43.183 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@215a329c
+2026-03-31 22:07:43.184 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-31 22:07:43.221 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-31 22:07:43.233 INFO  [main] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/csat_bmtt?useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: csat_bmtt/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-31 22:07:43.874 INFO  [main] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-31 22:07:43.992 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-31 22:07:44.042 INFO  [main] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-31 22:07:44.527 WARN  [main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-31 22:07:44.567 WARN  [main] o.s.b.s.a.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1314e33a-b7ef-4317-918d-a9d2e3a46488
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-03-31 22:07:44.572 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-31 22:07:44.873 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-03-31 22:07:44.886 INFO  [main] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2026-03-31 22:07:44.891 INFO  [main] group2.CSAT.BMTT.Application - Started Application in 3.597 seconds (process running for 4.089)
+2026-03-31 22:07:59.940 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-31 22:07:59.940 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-31 22:07:59.941 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-03-31 22:08:00.124 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/auth/login len=96 hexSample=bd70948d6d7fe2baab8f0771eff2235aeea21b9b49e58371a572ca06b976261401e0f8b44b9e33b90947ff09a054e724
+2026-03-31 22:08:00.125 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/auth/login len=47 jsonSample={"username":"giamdoc","password":"password123"}
+2026-03-31 22:08:00.267 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.service.AuthService - [Auth] Login success: username=giamdoc level=3 token=6cc678ea-db1e-499b-98a2-1444f01dd868 expires=2026-03-31T22:38:00.243501200
+2026-03-31 22:08:00.290 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/auth/login len=79 jsonSample={"level":3,"token":"6cc678ea-db1e-499b-98a2-1444f01dd868","username":"giamdoc"}
+2026-03-31 22:08:00.291 INFO  [http-nio-8081-exec-2] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/auth/login len=160 hexSample=8efe35ae5da485f577403dd694995e74bd61e713ce570c55b23e5b83eae9e2b94d7d1c6e4878a7808b4177450283db06d59142f8c3bc7395c637f39eaa99375c18b6e98d191a7e915cb872457eb41158
+2026-03-31 22:08:00.903 INFO  [http-nio-8081-exec-7] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/users len=0 hexSample=
+2026-03-31 22:08:00.903 INFO  [http-nio-8081-exec-7] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/users len=0 jsonSample=
+2026-03-31 22:08:00.907 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=0 hexSample=
+2026-03-31 22:08:00.907 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=0 jsonSample=
+2026-03-31 22:08:00.945 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=176 jsonSample=[{"id":1,"username":"giamdoc","action":"LOGIN","path":"/api/auth/login","detail":"token=6cc678ea-db1e-499b-98a2-1444f01dd868","ip":null,"createdAt":"2026-03-31T22:08:00.2674"}]
+2026-03-31 22:08:00.946 INFO  [http-nio-8081-exec-5] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=384 hexSample=9a95aa63a76bbbc511dec870ad06024383c34b57131b655b36aecbf2a0241fcb2c07fb3dbf143ad6cce01b8b79ae7cfe4cbcdb70074f5674d26bef7a5a24b3df065dc0f067b78dd5ca5586d881257a5a5488500cd06e14c84123302bf3a8af44fff5b378
+2026-03-31 22:08:00.954 INFO  [http-nio-8081-exec-7] g.CSAT.BMTT.service.UserService - [UserService] DB raw users fetched: count=5 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 22:08:00.955 INFO  [http-nio-8081-exec-7] g.CSAT.BMTT.service.UserService - [UserService] Masked users ready for response: count=5 first=id=1,fullName=dsa,cccd=111111111111,phone=43243243242,email=hjdfas@gmail.com,bank=34234324,salary=1200000,algo=AES-128-ECB callerLevel=3
+2026-03-31 22:08:00.973 INFO  [http-nio-8081-exec-7] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/users len=849 jsonSample=[{"id":1,"fullName":"dsa","cccd":"111111111111","phone":"43243243242","email":"hjdfas@gmail.com","bankAccount":"34234324","salary":"1200000","algo":"AES-128-ECB"},{"id":2,"fullName":"Phan Van Hiep","c
+2026-03-31 22:08:00.976 INFO  [http-nio-8081-exec-7] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/users len=1728 hexSample=4222035ae3bf3051e35836a907c8189cb40957a96250a7c922259cae71fa1eb73d34eab4c9d8bc447c9f666bd1db001565a6f6864cc46923ce2efc1f6f2607cbe31ecec8fe562860aee55a0e9c1816c13a7c3993d7b6dc0600aa36bcd5191872962f6808
+2026-03-31 22:08:08.523 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Incoming encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=0 hexSample=
+2026-03-31 22:08:08.524 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Decrypted request JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=0 jsonSample=
+2026-03-31 22:08:08.538 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Controller response JSON: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=312 jsonSample=[{"id":2,"username":"giamdoc","action":"VIEW_USERS","path":"/api/users","detail":null,"ip":null,"createdAt":"2026-03-31T22:08:00.95581"},{"id":1,"username":"giamdoc","action":"LOGIN","path":"/api/auth
+2026-03-31 22:08:08.539 INFO  [http-nio-8081-exec-3] g.CSAT.BMTT.crypto.CryptoFilter - [CryptoFilter] Outgoing encrypted payload: session=e25d43ef-3e18-4d36-a92b-93f7e229fce4 path=/api/logs len=640 hexSample=dcfba783a31f14fbc7702abb885eab1883c34b57131b655b36aecbf2a0241fcb4db0484817a21da6244db723051b7325b3d9461f3a22632f724416e9c52a0caacb3b5f08cde25a4ca803b3c076717510b6b9f2d4dfe241d2e99d50f2fefe46f479c9f693
+2026-03-31 22:08:54.275 INFO  [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-31 22:08:54.289 INFO  [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-31 22:08:54.293 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-31 22:08:54.295 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-31 22:08:54.304 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

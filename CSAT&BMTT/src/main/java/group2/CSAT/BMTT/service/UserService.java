@@ -6,6 +6,8 @@ import group2.CSAT.BMTT.model.entity.Account;
 import group2.CSAT.BMTT.model.entity.UserBusiness;
 import group2.CSAT.BMTT.repository.UserBusinessRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,20 +28,26 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
 
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
+
     private static final String DEFAULT_ALGO = "AES-128-ECB";
 
     private final UserBusinessRepository userRepository;
 
     public List<UserResponse> getAllUsers(Account caller) {
         List<UserBusiness> users = userRepository.findAll();
-        return users.stream()
-                .map(user -> toResponse(user, caller.getLevel()))
-                .collect(Collectors.toList());
+        log.info("[UserService] DB raw users fetched: count={} payload={} callerLevel={}", users.size(), users, caller.getLevel());
+        List<UserResponse> responses = users.stream()
+            .map(user -> toResponse(user, caller.getLevel()))
+            .collect(Collectors.toList());
+        log.info("[UserService] Masked users ready for response: count={} payload={} callerLevel={}", responses.size(), responses, caller.getLevel());
+        return responses;
     }
 
     public UserResponse getUserById(Long id, Account caller) {
         UserBusiness user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy User id=" + id));
+        log.info("[UserService] DB raw user fetched by id: id={} callerLevel={} user={} ", id, caller.getLevel(), summarize(user));
         return toResponse(user, caller.getLevel());
     }
 
@@ -58,6 +66,8 @@ public class UserService {
                 .salary(request.getSalary().trim())
                 .algo(DEFAULT_ALGO)
                 .build());
+
+        log.info("[UserService] Created user: callerLevel={} saved={} ", caller.getLevel(), summarize(saved));
 
         return toResponse(saved, caller.getLevel());
     }
@@ -112,5 +122,23 @@ public class UserService {
                     .algo(user.getAlgo())
                     .build();
         }
+    }
+
+    private String summarize(UserBusiness u) {
+        if (u == null) return "null";
+        return String.format("id=%s,fullName=%s,cccd=%s,phone=%s,email=%s,bank=%s,salary=%s,algo=%s",
+                u.getId(), u.getFullName(), u.getCccd(), u.getPhone(), u.getEmail(), u.getBankAccount(), u.getSalary(), u.getAlgo());
+    }
+
+    private String sampleUser(List<UserBusiness> users) {
+        if (users == null || users.isEmpty()) return "[]";
+        return summarize(users.get(0));
+    }
+
+    private String sampleResponse(List<UserResponse> users) {
+        if (users == null || users.isEmpty()) return "[]";
+        UserResponse u = users.get(0);
+        return String.format("id=%s,fullName=%s,cccd=%s,phone=%s,email=%s,bank=%s,salary=%s,algo=%s",
+                u.getId(), u.getFullName(), u.getCccd(), u.getPhone(), u.getEmail(), u.getBankAccount(), u.getSalary(), u.getAlgo());
     }
 }
