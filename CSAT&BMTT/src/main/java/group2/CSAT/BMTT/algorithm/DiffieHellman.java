@@ -60,8 +60,7 @@ public class DiffieHellman {
      * S = B^a mod P
      */
     public BigInteger calculateSharedSecret(BigInteger otherPublicKey) {
-        if (otherPublicKey == null
-                || otherPublicKey.compareTo(BigInteger.TWO) < 0
+        if (otherPublicKey == null || otherPublicKey.compareTo(BigInteger.TWO) < 0
                 || otherPublicKey.compareTo(P_MINUS_2) > 0) {
             throw new IllegalArgumentException(
                     "Public key không hợp lệ: phải nằm trong [2, P-2]"

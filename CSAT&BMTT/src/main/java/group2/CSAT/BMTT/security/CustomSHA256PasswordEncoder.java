@@ -18,8 +18,6 @@ import group2.CSAT.BMTT.algorithm.CustomSaltGenerator;
 public class CustomSHA256PasswordEncoder implements PasswordEncoder {
 
     // Sinh chuỗi ngẫu nhiên (sử dụng generator tự viết)
-    // private final SecureRandom random = new SecureRandom(); // Không dùng thư viện SecureRandom nữa
-
     /**
      * Hàm encode: Băm mật khẩu người dùng truyền gửi vào
      */

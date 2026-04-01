@@ -17,10 +17,10 @@ final class Sha256Compression {
 
         for (int t = 0; t < 64; t++) {
             int t1 = h
-                + Sha256BitOps.sigma1Upper(e)
-                + Sha256BitOps.ch(e, f, g)
-                + Sha256Constants.K[t]
-                + messageSchedule[t];
+                    + Sha256BitOps.sigma1Upper(e)
+                    + Sha256BitOps.ch(e, f, g)
+                    + Sha256Constants.K[t]
+                    + messageSchedule[t];
             int t2 = Sha256BitOps.sigma0Upper(a) + Sha256BitOps.maj(a, b, c);
 
             h = g;

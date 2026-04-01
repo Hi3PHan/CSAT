@@ -19,24 +19,32 @@ public class DHService {
     private final Map<String, DiffieHellman> dhInstances = new ConcurrentHashMap<>();
 
     /**
-     * One-step DH Handshake: Receive client public key, generate server key, compute AES key immediately.
+     * Thực hiện bắt tay Diffie-Hellman: Nhận Public Key của client, tạo mã phiên,
+     * tính toán Shared Secret và sinh ra khóa AES dùng cho phiên làm việc đó.
      */
     public DHResponse handshake(String clientPublicKeyHex) {
+        // 1. Khởi tạo đối tượng DH (Tự sinh cặp khóa Private/Public của Server)
         DiffieHellman dh = new DiffieHellman();
+
+        // 2. Tạo ID phiên duy nhất (Session UUID) cho kết nối này
         String sessionId = UUID.randomUUID().toString();
-        
-        BigInteger clientPubKey = parseClientPublicKey(clientPublicKeyHex);
+
+        // 3. Chuyển đổi Public Key của Client từ chuỗi Hex sang số nguyên BigInteger
+        BigInteger clientPubKey = new BigInteger(clientPublicKeyHex, 16);
+
+        // 4. Tính toán Shared Secret (Bí mật dùng chung) từ khóa Server và khóa Client
         byte[] sharedSecretBytes = dh.getSharedSecretBytes(clientPubKey);
 
-        // Derive AES-128 key using custom SHA-256
+        // 5. Băm Shared Secret bằng thuật toán SHA-256 để tăng tính bảo mật
         String hashedHex = SHA256.hashHex(sharedSecretBytes);
-        
-        // Take the first 32 hex chars (16 bytes) for AES-128 session key
+
+        // 6. Lấy 32 ký tự Hex đầu tiên (tương đương 16 byte/128 bit) làm khóa AES-128
         byte[] aesKey = hexStringToByteArray(hashedHex.substring(0, 32));
-        
-        // Save to cache
+
+        // 7. Lưu trữ cặp (SessionId -> Khóa AES) vào bộ nhớ tạm (Cache) để dùng cho các request sau
         sessionKeys.put(sessionId, aesKey);
-        
+
+        // 8. Trả về SessionId và Public Key của Server để Client cũng có thể tự tính ra khóa AES tương ứng
         return new DHResponse(sessionId, dh.getPublicKey().toString(16));
     }
 
@@ -47,7 +55,7 @@ public class DHService {
         DiffieHellman dh = new DiffieHellman();
         String sessionId = UUID.randomUUID().toString();
         dhInstances.put(sessionId, dh);
-        
+
         return new DHResponse(sessionId, dh.getPublicKey().toString(16));
     }
 
@@ -60,15 +68,15 @@ public class DHService {
             throw new RuntimeException("Invalid or expired session id");
         }
 
-        BigInteger clientPubKey = parseClientPublicKey(clientPublicKeyHex);
+        BigInteger clientPubKey = new BigInteger(clientPublicKeyHex, 16);
         byte[] sharedSecretBytes = dh.getSharedSecretBytes(clientPubKey);
 
         // Derive AES-128 key using custom SHA-256
         String hashedHex = SHA256.hashHex(sharedSecretBytes);
-        
+
         // Take the first 32 hex chars (16 bytes) for AES-128 session key
         byte[] aesKey = hexStringToByteArray(hashedHex.substring(0, 32));
-        
+
         // Save to cache
         sessionKeys.put(sessionId, aesKey);
     }
@@ -88,30 +96,10 @@ public class DHService {
         return data;
     }
 
-    private BigInteger parseClientPublicKey(String value) {
-        if (value == null) {
-            throw new IllegalArgumentException("Client public key is null");
-        }
-        String normalized = value.trim();
-        if (normalized.isEmpty()) {
-            throw new IllegalArgumentException("Client public key is empty");
-        }
-        if (normalized.startsWith("0x") || normalized.startsWith("0X")) {
-            normalized = normalized.substring(2);
-            if (normalized.isEmpty()) {
-                throw new IllegalArgumentException("Client public key is empty after removing prefix");
-            }
-            return new BigInteger(normalized, 16);
-        }
-        boolean hasHexLetter = normalized.matches(".*[a-fA-F].*");
-        int radix = hasHexLetter ? 16 : 10;
-        return new BigInteger(normalized, radix);
-    }
-
     public static class DHResponse {
         public String sessionId;
         public String serverPublicKey;
-        
+
         public DHResponse(String sessionId, String serverPublicKey) {
             this.sessionId = sessionId;
             this.serverPublicKey = serverPublicKey;
